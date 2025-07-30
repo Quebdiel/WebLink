@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Acceso Seguro</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f4f4f4;
+            margin: 0;
+            flex-direction: column;
+        }
+        .container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        input[type="password"] {
+            padding: 10px;
+            margin: 15px 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            width: 200px;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        #message {
+            color: red;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Ingresa la Contraseña para Continuar</h2>
+        <input type="password" id="passwordInput" placeholder="Contraseña">
+        <br>
+        <button onclick="checkPassword()">Acceder</button>
+        <p id="message"></p>
+    </div>
+
+    <script>
+        // *** CONFIGURACIÓN IMPORTANTE: Modifica estos valores ***
+        const CORRECT_PASSWORD = "1234"; // <-- ¡CAMBIA ESTO por tu contraseña!
+        const MAKE_COM_WEBHOOK_URL = "https://hook.us2.make.com/4et94298rbihe5po5occtnwbsii5839f"; // <-- Pega tu URL de Make.com aquí
+        const FINAL_REDIRECT_URL = "https://open.spotify.com/track/0XwJGj1tXy2IvacjPZ3dDe?si=glgAImljRJu6VnfDSg--Ig”"; // <-- Tu URL final de redirección
+
+        function checkPassword() {
+            const enteredPassword = document.getElementById("passwordInput").value;
+            const messageElement = document.getElementById("message");
+
+            if (enteredPassword === CORRECT_PASSWORD) {
+                messageElement.textContent = "Contraseña correcta. Redirigiendo...";
+                messageElement.style.color = "green"; // Cambia el color del mensaje a verde
+
+                // Realizar la notificación a Make.com
+                fetch(MAKE_COM_WEBHOOK_URL)
+                    .then(response => {
+                        if (!response.ok) {
+                            console.error('Error al enviar la notificación a Make.com:', response.status);
+                        } else {
+                            console.log('Notificación enviada a Make.com con éxito.');
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error de red al intentar enviar a Make.com:', error);
+                    })
+                    .finally(() => {
+                        // Redirigir a la URL final después de intentar la notificación
+                        setTimeout(() => { // Pequeño retraso para que el usuario vea el mensaje
+                            window.location.href = FINAL_REDIRECT_URL;
+                        }, 1500); // Redirige después de 1.5 segundos
+                    });
+
+            } else {
+                messageElement.textContent = "Contraseña incorrecta. Intenta de nuevo.";
+                messageElement.style.color = "red"; // Asegura que el mensaje de error sea rojo
+            }
+        }
+
+        // Permitir presionar Enter para enviar
+        document.getElementById("passwordInput").addEventListener("keypress", function(event) {
+            if (event.key === "Enter") {
+                checkPassword();
+            }
+        });
+    </script>
+</body>
+</html>
