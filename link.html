@@ -272,9 +272,14 @@
             }
         }
 
-        // Permitir presionar Enter para enviar
-        document.getElementById("passwordInput").addEventListener("keypress", function(event) {
-            if (event.key === "Enter") {
-                checkPassword();
-            }
+        // Esperar a que el DOM esté listo antes de agregar el listener
+        document.addEventListener("DOMContentLoaded", function() {
+            document.getElementById("passwordInput").addEventListener("keypress", function(event) {
+                if (event.key === "Enter") {
+                    checkPassword();
+                }
+            });
         });
+    </script>
+</body>
+</html>
