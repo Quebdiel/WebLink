@@ -9,38 +9,19 @@
             justify-content: center;
             align-items: center;
             min-height: 100vh;
+            background-color: #f4f4f4;
             margin: 0;
             flex-direction: column;
-            background-color: #f4f4f4;
-            position: relative; /* Para que los corazones estén relativos al body */
-            overflow: hidden; /* Para que los corazones que se van no generen scroll */
+            position: relative;
+            overflow: hidden;
         }
-        .heart {
-            color: magenta; /* Color magenta para los corazones */
-            font-size: 2em; /* Tamaño base del corazón */
-            position: absolute;
-            animation: float 5s infinite alternate, rotate 7s infinite linear;
-            opacity: 0.6; /* Un poco de transparencia */
-            pointer-events: none; /* Para que los corazones no interfieran con los clics */
-            user-select: none; /* Para que no se puedan seleccionar */
-        }
-        /* Animación para que los corazones floten suavemente */
-        @keyframes float {
-            0% {
-                transform: translateY(0);
-            }
-            100% {
-                transform: translateY(20px);
-            }
-        }
-        /* Animación para que los corazones giren */
-        @keyframes rotate {
-            0% {
-                transform: rotate(0deg);
-            }
-            100% {
-                transform: rotate(360deg);
-            }
+        .bg-hearts {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 0;
+            pointer-events: none;
         }
         .container {
             background-color: #fff;
@@ -48,7 +29,8 @@
             border-radius: 8px;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             text-align: center;
-            z-index: 10; /* Asegura que el contenedor esté por encima de los corazones */
+            z-index: 1;
+            position: relative;
         }
         input[type="password"] {
             padding: 10px;
@@ -70,12 +52,179 @@
             background-color: #0056b3;
         }
         #message {
+            color: red;
             margin-top: 10px;
-            font-weight: bold;
         }
     </style>
 </head>
 <body>
+    <div class="bg-hearts">
+        <svg width="100vw" height="100vh">
+            <g>
+                <!-- Corazón SVG clásico, más realista y simétrico -->
+                <!-- Fila 1 -->
+                <path d="M24 8
+                         C 12 -4, -8 12, 24 40
+                         C 56 12, 36 -4, 24 8
+                         Z" fill="#d5008f" opacity="0.7" transform="translate(60,80) scale(1.7)"/>
+                <path d="M24 8
+                         C 12 -4, -8 12, 24 40
+                         C 56 12, 36 -4, 24 8
+                         Z" fill="#d5008f" opacity="0.6" transform="translate(200,60) scale(1.3)"/>
+                <path d="M24 8
+                         C 12 -4, -8 12, 24 40
+                         C 56 12, 36 -4, 24 8
+                         Z" fill="#d5008f" opacity="0.5" transform="translate(350,90) scale(1.5)"/>
+                <path d="M24 8
+                         C 12 -4, -8 12, 24 40
+                         C 56 12, 36 -4, 24 8
+                         Z" fill="#d5008f" opacity="0.4" transform="translate(500,60) scale(1.8)"/>
+                <path d="M24 8
+                         C 12 -4, -8 12, 24 40
+                         C 56 12, 36 -4, 24 8
+                         Z" fill="#d5008f" opacity="0.5" transform="translate(700,80) scale(1.7)"/>
+                <path d="M24 8
+                         C 12 -4, -8 12, 24 40
+                         C 56 12, 36 -4, 24 8
+                         Z" fill="#d5008f" opacity="0.6" transform="translate(900,60) scale(1.5)"/>
+                <path d="M24 8
+                         C 12 -4, -8 12, 24 40
+                         C 56 12, 36 -4, 24 8
+                         Z" fill="#d5008f" opacity="0.5" transform="translate(1100,90) scale(1.7)"/>
+                <path d="M24 8
+                         C 12 -4, -8 12, 24 40
+                         C 56 12, 36 -4, 24 8
+                         Z" fill="#d5008f" opacity="0.4" transform="translate(1300,60) scale(1.5)"/>
+                <path d="M24 8
+                         C 12 -4, -8 12, 24 40
+                         C 56 12, 36 -4, 24 8
+                         Z" fill="#d5008f" opacity="0.6" transform="translate(1500,80) scale(1.7)"/>
+                <path d="M24 8
+                         C 12 -4, -8 12, 24 40
+                         C 56 12, 36 -4, 24 8
+                         Z" fill="#d5008f" opacity="0.5" transform="translate(1700,60) scale(1.5)"/>
+                <!-- Fila 2 -->
+                <path d="M24 8
+                         C 12 -4, -8 12, 24 40
+                         C 56 12, 36 -4, 24 8
+                         Z" fill="#d5008f" opacity="0.6" transform="translate(120,250) scale(1.2)"/>
+                <path d="M24 8
+                         C 12 -4, -8 12, 24 40
+                         C 56 12, 36 -4, 24 8
+                         Z" fill="#d5008f" opacity="0.5" transform="translate(300,300) scale(1.5)"/>
+                <path d="M24 8
+                         C 12 -4, -8 12, 24 40
+                         C 56 12, 36 -4, 24 8
+                         Z" fill="#d5008f" opacity="0.7" transform="translate(500,270) scale(1.7)"/>
+                <path d="M24 8
+                         C 12 -4, -8 12, 24 40
+                         C 56 12, 36 -4, 24 8
+                         Z" fill="#d5008f" opacity="0.6" transform="translate(700,320) scale(1.3)"/>
+                <path d="M24 8
+                         C 12 -4, -8 12, 24 40
+                         C 56 12, 36 -4, 24 8
+                         Z" fill="#d5008f" opacity="0.5" transform="translate(900,300) scale(1.5)"/>
+                <path d="M24 8
+                         C 12 -4, -8 12, 24 40
+                         C 56 12, 36 -4, 24 8
+                         Z" fill="#d5008f" opacity="0.4" transform="translate(1100,320) scale(1.7)"/>
+                <path d="M24 8
+                         C 12 -4, -8 12, 24 40
+                         C 56 12, 36 -4, 24 8
+                         Z" fill="#d5008f" opacity="0.5" transform="translate(1300,300) scale(1.3)"/>
+                <path d="M24 8
+                         C 12 -4, -8 12, 24 40
+                         C 56 12, 36 -4, 24 8
+                         Z" fill="#d5008f" opacity="0.6" transform="translate(1500,320) scale(1.5)"/>
+                <path d="M24 8
+                         C 12 -4, -8 12, 24 40
+                         C 56 12, 36 -4, 24 8
+                         Z" fill="#d5008f" opacity="0.5" transform="translate(1700,300) scale(1.5)"/>
+                <!-- Fila 3 -->
+                <path d="M24 8
+                         C 12 -4, -8 12, 24 40
+                         C 56 12, 36 -4, 24 8
+                         Z" fill="#d5008f" opacity="0.7" transform="translate(60,500) scale(1.5)"/>
+                <path d="M24 8
+                         C 12 -4, -8 12, 24 40
+                         C 56 12, 36 -4, 24 8
+                         Z" fill="#d5008f" opacity="0.6" transform="translate(250,600) scale(1.3)"/>
+                <path d="M24 8
+                         C 12 -4, -8 12, 24 40
+                         C 56 12, 36 -4, 24 8
+                         Z" fill="#d5008f" opacity="0.5" transform="translate(450,650) scale(1.7)"/>
+                <path d="M24 8
+                         C 12 -4, -8 12, 24 40
+                         C 56 12, 36 -4, 24 8
+                         Z" fill="#d5008f" opacity="0.4" transform="translate(650,700) scale(1.5)"/>
+                <path d="M24 8
+                         C 12 -4, -8 12, 24 40
+                         C 56 12, 36 -4, 24 8
+                         Z" fill="#d5008f" opacity="0.5" transform="translate(850,650) scale(1.7)"/>
+                <path d="M24 8
+                         C 12 -4, -8 12, 24 40
+                         C 56 12, 36 -4, 24 8
+                         Z" fill="#d5008f" opacity="0.6" transform="translate(1050,700) scale(1.3)"/>
+                <path d="M24 8
+                         C 12 -4, -8 12, 24 40
+                         C 56 12, 36 -4, 24 8
+                         Z" fill="#d5008f" opacity="0.7" transform="translate(1250,650) scale(1.5)"/>
+                <path d="M24 8
+                         C 12 -4, -8 12, 24 40
+                         C 56 12, 36 -4, 24 8
+                         Z" fill="#d5008f" opacity="0.6" transform="translate(1450,700) scale(1.3)"/>
+                <path d="M24 8
+                         C 12 -4, -8 12, 24 40
+                         C 56 12, 36 -4, 24 8
+                         Z" fill="#d5008f" opacity="0.5" transform="translate(1700,650) scale(1.5)"/>
+                <!-- Extras para más densidad y cubrir huecos -->
+                <path d="M24 8
+                         C 12 -4, -8 12, 24 40
+                         C 56 12, 36 -4, 24 8
+                         Z" fill="#d5008f" opacity="0.3" transform="translate(1800,120) scale(1.2)"/>
+                <path d="M24 8
+                         C 12 -4, -8 12, 24 40
+                         C 56 12, 36 -4, 24 8
+                         Z" fill="#d5008f" opacity="0.3" transform="translate(1800,350) scale(1.2)"/>
+                <path d="M24 8
+                         C 12 -4, -8 12, 24 40
+                         C 56 12, 36 -4, 24 8
+                         Z" fill="#d5008f" opacity="0.3" transform="translate(1800,650) scale(1.2)"/>
+                <path d="M24 8
+                         C 12 -4, -8 12, 24 40
+                         C 56 12, 36 -4, 24 8
+                         Z" fill="#d5008f" opacity="0.3" transform="translate(1600,500) scale(1.2)"/>
+                <path d="M24 8
+                         C 12 -4, -8 12, 24 40
+                         C 56 12, 36 -4, 24 8
+                         Z" fill="#d5008f" opacity="0.3" transform="translate(1400,500) scale(1.2)"/>
+                <path d="M24 8
+                         C 12 -4, -8 12, 24 40
+                         C 56 12, 36 -4, 24 8
+                         Z" fill="#d5008f" opacity="0.3" transform="translate(1200,500) scale(1.2)"/>
+                <path d="M24 8
+                         C 12 -4, -8 12, 24 40
+                         C 56 12, 36 -4, 24 8
+                         Z" fill="#d5008f" opacity="0.3" transform="translate(1000,500) scale(1.2)"/>
+                <path d="M24 8
+                         C 12 -4, -8 12, 24 40
+                         C 56 12, 36 -4, 24 8
+                         Z" fill="#d5008f" opacity="0.3" transform="translate(800,500) scale(1.2)"/>
+                <path d="M24 8
+                         C 12 -4, -8 12, 24 40
+                         C 56 12, 36 -4, 24 8
+                         Z" fill="#d5008f" opacity="0.3" transform="translate(600,500) scale(1.2)"/>
+                <path d="M24 8
+                         C 12 -4, -8 12, 24 40
+                         C 56 12, 36 -4, 24 8
+                         Z" fill="#d5008f" opacity="0.3" transform="translate(400,500) scale(1.2)"/>
+                <path d="M24 8
+                         C 12 -4, -8 12, 24 40
+                         C 56 12, 36 -4, 24 8
+                         Z" fill="#d5008f" opacity="0.3" transform="translate(200,500) scale(1.2)"/>
+            </g>
+        </svg>
+    </div>
     <div class="container">
         <h2>Ingresa la Contraseña para Continuar</h2>
         <input type="password" id="passwordInput" placeholder="Contraseña">
@@ -85,11 +234,10 @@
     </div>
 
     <script>
-        // --- CONFIGURACIÓN IMPORTANTE: ¡MODIFICA ESTOS VALORES! ---
-        const CORRECT_PASSWORD = "Naleysha"; // <-- ¡CAMBIA ESTO por tu contraseña deseada!
+        // *** CONFIGURACIÓN IMPORTANTE: Modifica estos valores ***
+        const CORRECT_PASSWORD = "1234"; // <-- ¡CAMBIA ESTO por tu contraseña!
         const MAKE_COM_WEBHOOK_URL = "https://hook.us2.make.com/4et94298rbihe5po5occtnwbsii5839f"; // <-- Pega tu URL de Make.com aquí
-        const FINAL_REDIRECT_URL = "https://open.spotify.com/track/0XwJGj1tXy2IvacjPZ3dDe?si=glgAImljRJu6VnfDSg--Ig”"; // <-- Tu URL final de redirección
-        // --------------------------------------------------------
+        const FINAL_REDIRECT_URL = "https://open.spotify.com/track/0XwJGj1tXy2IvacjPZ3dDe?si=glgAImljRJu6VnfDSg--Ig"; // <-- Tu URL final de redirección
 
         function checkPassword() {
             const enteredPassword = document.getElementById("passwordInput").value;
@@ -97,13 +245,13 @@
 
             if (enteredPassword === CORRECT_PASSWORD) {
                 messageElement.textContent = "Contraseña correcta. Redirigiendo...";
-                messageElement.style.color = "green"; // Mensaje de éxito en verde
+                messageElement.style.color = "green"; // Cambia el color del mensaje a verde
 
-                // 1. Envía la notificación a Make.com
+                // Realizar la notificación a Make.com
                 fetch(MAKE_COM_WEBHOOK_URL)
                     .then(response => {
                         if (!response.ok) {
-                            console.error('Error al enviar la notificación a Make.com:', response.status, response.statusText);
+                            console.error('Error al enviar la notificación a Make.com:', response.status);
                         } else {
                             console.log('Notificación enviada a Make.com con éxito.');
                         }
@@ -112,57 +260,21 @@
                         console.error('Error de red al intentar enviar a Make.com:', error);
                     })
                     .finally(() => {
-                        // 2. Redirige a la URL final después de intentar la notificación
-                        // Pequeño retraso para que el usuario vea el mensaje de éxito
-                        setTimeout(() => {
+                        // Redirigir a la URL final después de intentar la notificación
+                        setTimeout(() => { // Pequeño retraso para que el usuario vea el mensaje
                             window.location.href = FINAL_REDIRECT_URL;
                         }, 1500); // Redirige después de 1.5 segundos
                     });
 
             } else {
                 messageElement.textContent = "Contraseña incorrecta. Intenta de nuevo.";
-                messageElement.style.color = "red"; // Mensaje de error en rojo
+                messageElement.style.color = "red"; // Asegura que el mensaje de error sea rojo
             }
         }
 
-        // Permite presionar Enter en el campo de contraseña para activar el botón
+        // Permitir presionar Enter para enviar
         document.getElementById("passwordInput").addEventListener("keypress", function(event) {
             if (event.key === "Enter") {
                 checkPassword();
             }
         });
-
-        // --- LÓGICA PARA LOS CORAZONES ANIMADOS ---
-        function createHeart() {
-            const heart = document.createElement('div');
-            heart.classList.add('heart');
-            heart.innerHTML = '💜'; // Emoji de corazón (magenta/morado)
-            
-            // Posición aleatoria en el ancho y alto de la ventana
-            heart.style.left = `${Math.random() * 100}vw`; 
-            heart.style.top = `${Math.random() * 100}vh`;
-            
-            // Tamaño aleatorio para variar
-            heart.style.fontSize = `${Math.random() * 1.5 + 1}em`; 
-            
-            // Desfase en la animación para que no empiecen todos al mismo tiempo
-            heart.style.animationDelay = `${Math.random() * 5}s`; 
-            
-            document.body.appendChild(heart);
-
-            // Elimina el corazón después de un tiempo para evitar acumulación
-            setTimeout(() => {
-                heart.remove();
-            }, 15000); 
-        }
-
-        // Genera un número inicial de corazones al cargar la página
-        for (let i = 0; i < 20; i++) { // Puedes ajustar la cantidad inicial
-            createHeart();
-        }
-
-        // Genera nuevos corazones de forma continua cada cierto tiempo
-        setInterval(createHeart, 1500); // Crea un nuevo corazón cada 1.5 segundos
-    </script>
-</body>
-</html>
